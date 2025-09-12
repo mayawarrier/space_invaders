@@ -2,7 +2,7 @@
 
 Emulator for the classic Space Invaders arcade game from 1978!  
 - Can run in a browser or as a native application
-- Includes a complete emulation of the Intel 8080 microprocessor
+- Includes an instruction level emulation of the Intel 8080 microprocessor
 - Supports original Space Invaders ROMs by Taito or Midway
 - Cross-platform (Windows, Linux, MacOS, Web)
 
@@ -67,15 +67,16 @@ You can run the emulator with `web/scripts/./web-run -Install -Browser chrome` (
 
 ## Run options
 ```
-1978 Space Invaders emulator.
+Space Invaders emulator.
+Relive the classic 1978 arcade game!
 Usage:
   spaceinvaders [OPTION...]
 
   -h, --help             Show this help message.
   -a, --asset-dir <dir>  Path to game assets (ROM/audio/fonts etc.)
                          (default: assets/)
-  -r, --renderer <rend>  Render backend to use. See SDL_HINT_RENDER_DRIVER.
-                         If not provided, will be determined automatically.
+  -r, --renderer <rend>  Optional: override the render backend (see
+                         SDL_HINT_RENDER_DRIVER).
       --disable-menu     Disable menu bar.
 
 ```

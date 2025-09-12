@@ -928,6 +928,7 @@ void emu_gui::draw_about_content()
         } else {
             ImGui::TextUnformatted("Space Invaders Emulator");
         }
+        ImGui::TextUnformatted("Relive the classic arcade game from 1978!\n\n");
 
         ImGui::TextUnformatted("2024-25 Maya Warrier\n");
         draw_url("mayawarrier.github.io", "https://mayawarrier.github.io/", false);
@@ -937,13 +938,14 @@ void emu_gui::draw_about_content()
         {
             ImGui::TextUnformatted("Source code on ");
             draw_url("GitHub", "https://github.com/mayawarrier/space_invaders_emulator/");
-            ImGui::TextUnformatted(".\n\n");
+            ImGui::TextUnformatted(".\n");
         }
         ImGui::PopStyleVar();
         
+        ImGui::Dummy(ImVec2(0, 3));
         ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
         {
-            ImGui::TextUnformatted("See the list of ");
+            ImGui::TextUnformatted("View ");
             draw_url("third-party licenses", "THIRD_PARTY_LICENSES.txt", true, false);
             ImGui::TextUnformatted(".\n\n");
         }
@@ -955,17 +957,16 @@ void emu_gui::draw_about_content()
         ImGui::Dummy(ImVec2(0, 10));
 
         const char* content =
-            "Experience the classic Space Invaders arcade game from 1978!\n\n"
-            "The original game code is run unmodified. The emulator reproduces the hardware environment "
-            "expected by the game - simulating the CPU, memory, and I/O devices so the game thinks "
-            "it's running on an arcade machine.\n\n";
+            "This program acts as a virtual machine, recreating the hardware environment the game was originally designed for. " 
+            "It simulates the Intel 8080 CPU, memory, and surrounding audio, video, and interrupt chips, "
+            "so the game behaves as though it were still running on the 1978 arcade machine.\n\n";
 
         ImGui::TextUnformatted(content);
 
         static constexpr std::pair<const char*, const char*> links[] = {
-            { "Computer Archeology website", "https://www.computerarcheology.com/Arcade/SpaceInvaders/" },
-            { "RadioShack Intel 8080 Manual", "https://archive.org/details/8080-8085_Assembly_Language_Programming_1977_Intel" },
-            { "Intel 8080 Datasheet", "https://deramp.com/downloads/intel/8080%20Data%20Sheet.pdf" }
+            { "Space Invaders arcade hardware", "https://www.computerarcheology.com/Arcade/SpaceInvaders/Hardware.html" },
+            { "Intel 8080 Assembly Language Manual", "https://archive.org/details/8080-8085_Assembly_Language_Programming_1977_Intel" },
+            { "Intel 8080 Schematics/Datasheet", "https://deramp.com/downloads/intel/8080%20Data%20Sheet.pdf" }
         };
 
         ImGui::TextUnformatted("Learn more:");

@@ -27,13 +27,13 @@ static int do_main(int argc, char* argv[])
 #ifdef __EMSCRIPTEN__
     emu emu("assets/");
 #else
-    cxxopts::Options opts("spaceinvaders", "1978 Space Invaders emulator.");
+    cxxopts::Options opts("spaceinvaders", "Space Invaders emulator.\nRelive the classic 1978 arcade game!");
     opts.add_options()
         ("h,help", "Show this help message.")
         ("a,asset-dir", "Path to game assets (ROM/audio/fonts etc.)",
             cxxopts::value<std::string>()->default_value("assets/"), "<dir>")
-        ("r,renderer", "Render backend to use. See SDL_HINT_RENDER_DRIVER. If not provided, "
-            "will be determined automatically.", cxxopts::value<std::string>(), "<rend>")
+        ("r,renderer", "Optional: override the render backend (see SDL_HINT_RENDER_DRIVER).", 
+            cxxopts::value<std::string>(), "<rend>")
         ("disable-menu", "Disable menu bar.");
         
     auto args = opts.parse(argc, argv);
