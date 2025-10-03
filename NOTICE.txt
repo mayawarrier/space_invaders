@@ -1,0 +1,10 @@
+=== License Information ===
+This project is licensed under the MIT License (see LICENSE.txt).
+Third-party components are licensed separately.  
+- Cascadia Code font (assets/font.ttf) — SIL Open Font License, see licenses/LICENSE_CascadiaCode.txt  
+- Additional third-party licenses are included in release packages.
+
+=== Disclaimer ===
+This project is an emulator for educational and preservation purposes. 
+It is not affiliated with or endorsed by the original copyright holders. 
+The Space Invaders name, ROM, and audio are the property of their respective copyright holders.

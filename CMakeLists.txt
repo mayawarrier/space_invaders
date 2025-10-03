@@ -446,7 +446,7 @@ endif()
 
 # ----------------------------- CascadiaCode ------------------------------
 
-add_license("CascadiaCode 2407.24" "${CMAKE_SOURCE_DIR}/third_party/LICENSE_CascadiaCode.txt")
+add_license("CascadiaCode 2407.24" "${CMAKE_SOURCE_DIR}/licenses/LICENSE_CascadiaCode.txt")
 
 # -------------------------------- imgui --------------------------------
 
@@ -513,6 +513,7 @@ if (WIN32)
         "$<TARGET_FILE:${TARGET_NAME_SDL2}>"
         "$<TARGET_FILE:${TARGET_NAME_SDL2_MIXER}>"
         "${CMAKE_SOURCE_DIR}/LICENSE.txt"
+        "${CMAKE_SOURCE_DIR}/NOTICE.txt"
         "${EXT_LICENSES_BINFILE}"
         DESTINATION ${CMAKE_INSTALL_PREFIX})
 
@@ -525,6 +526,7 @@ elseif (EMSCRIPTEN)
         "$<TARGET_FILE_DIR:spaceinvaders>/spaceinvaders.wasm"
         "${CMAKE_BINARY_DIR}/index.html"
         "${CMAKE_SOURCE_DIR}/LICENSE.txt"
+        "${CMAKE_SOURCE_DIR}/NOTICE.txt"
         "${EXT_LICENSES_BINFILE}"
         DESTINATION "${CMAKE_INSTALL_PREFIX}")
 
@@ -548,7 +550,8 @@ else()
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
     install(FILES 
-        ${CMAKE_SOURCE_DIR}/LICENSE 
+        "${CMAKE_SOURCE_DIR}/LICENSE.txt" 
+        "${CMAKE_SOURCE_DIR}/NOTICE.txt"
         ${EXT_LICENSES_BINFILE}
         DESTINATION ${CMAKE_INSTALL_DOCDIR})
 endif()

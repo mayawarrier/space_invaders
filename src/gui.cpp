@@ -923,43 +923,52 @@ void emu_gui::draw_about_content()
 
     ImGui::PushTextWrapPos(ImGui::GetWindowSize().x - ImGui::GetStyle().WindowPadding.x);
     {
-        if (build_num()) {
-            ImGui::Text("Space Invaders Emulator (build %s)", build_num());
-        } else {
-            ImGui::TextUnformatted("Space Invaders Emulator");
-        }
+        ImGui::Text("Space Invaders Emulator");
         ImGui::TextUnformatted("Relive the classic arcade game from 1978!\n\n");
 
-        ImGui::TextUnformatted("2024-25 Maya Warrier\n");
-        draw_url("mayawarrier.github.io", "https://mayawarrier.github.io/", false);
-        ImGui::NewLine();
+        if (build_num()) {
+            ImGui::Text("Build: %s\n\n", build_num());
+        }
 
+        ImGui::Dummy(ImVec2(0, 3));
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
+        {
+            ImGui::TextUnformatted("Created by ");
+            draw_url("mayawarrier.github.io", "https://mayawarrier.github.io/");
+            ImGui::TextUnformatted(".");
+        }
+        ImGui::PopStyleVar();
+
+        ImGui::Dummy(ImVec2(0, 3));
         ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
         {
             ImGui::TextUnformatted("Source code on ");
             draw_url("GitHub", "https://github.com/mayawarrier/space_invaders_emulator/");
-            ImGui::TextUnformatted(".\n");
+            ImGui::TextUnformatted(".");
         }
         ImGui::PopStyleVar();
         
-        ImGui::Dummy(ImVec2(0, 3));
-        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
+        if (is_emscripten()) 
         {
-            ImGui::TextUnformatted("View ");
-            draw_url("third-party licenses", "THIRD_PARTY_LICENSES.txt", true, false);
-            ImGui::TextUnformatted(".\n\n");
+            ImGui::Dummy(ImVec2(0, 3));
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
+            {
+                ImGui::TextUnformatted("View ");
+                draw_url("licenses", "https://github.com/mayawarrier/space_invaders_emulator/tree/gh-pages/", true);
+                ImGui::TextUnformatted(".");
+            }
+            ImGui::PopStyleVar();
         }
-        ImGui::PopStyleVar();
 
-        ImGui::NewLine();
+        ImGui::TextUnformatted("\n\n");
 
         draw_header("How it works");
         ImGui::Dummy(ImVec2(0, 10));
 
         const char* content =
-            "This program acts as a virtual machine, recreating the hardware environment the game was originally designed for. " 
+            "This program acts as a virtual machine, recreating the hardware environment the game originally ran on. " 
             "It simulates the Intel 8080 CPU, memory, and surrounding audio, video, and interrupt chips, "
-            "so the game behaves as though it were still running on the 1978 arcade machine.\n\n";
+            "so the game behaves as though it were still running on a 1978 arcade machine.\n\n";
 
         ImGui::TextUnformatted(content);
 
